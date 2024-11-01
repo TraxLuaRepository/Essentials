@@ -1,0 +1,51 @@
+
+local Cryptography = {}
+
+-- NOTE THIS IS COMPLETELY CHATGPT CODED! THIS IS MERELY A PROOF OF CONCEPT AS A METHOD I THOUGHT OF BUT DID NOT WANNA CODE!!! SOME CODE IS MINE BLAH BLAH I JUST HATE DOING IT!!
+
+Cryptography.generateShuffle = function(numItems)
+    local shuffleOrder = {}
+    for i = 1, numItems do
+        table.insert(shuffleOrder, i)
+    end
+
+    for i = numItems, 2, -1 do
+        local j = math.random(i) 
+        shuffleOrder[i], shuffleOrder[j] = shuffleOrder[j], shuffleOrder[i] 
+    end
+
+    return shuffleOrder
+end
+
+Cryptography.shuffle = function(strTable, shuffleOrder)
+    local output = {}
+    for _, index in ipairs(shuffleOrder) do
+        table.insert(output, strTable[index])
+    end
+    return output
+end
+
+Cryptography.unshuffle = function(shuffledTable, shuffleOrder)
+    local originalTable = {}
+    for i = 1, #shuffleOrder do
+        originalTable[shuffleOrder[i]] = shuffledTable[i]
+    end
+    
+    return originalTable
+end
+Cryptography.GenerateGenesisShuffle = function(str, numParts)
+    local parts = {}
+    local length = #str
+    local partLength = math.ceil(length / numParts)  
+
+    for i = 1, numParts do
+        local startIdx = (i - 1) * partLength + 1
+        local endIdx = math.min(startIdx + partLength - 1, length)
+
+        if startIdx <= length then
+            table.insert(parts, str:sub(startIdx, endIdx))
+        end
+    end
+
+    return parts
+end
