@@ -1,4 +1,3 @@
-
 local Cryptography = {}
 
 -- NOTE THIS IS COMPLETELY CHATGPT CODED! THIS IS MERELY A PROOF OF CONCEPT AS A METHOD I THOUGHT OF BUT DID NOT WANNA CODE!!! SOME CODE IS MINE BLAH BLAH I JUST HATE DOING IT!!
@@ -49,3 +48,4 @@ Cryptography.GenerateGenesisShuffle = function(str, numParts)
 
     return parts
 end
+return Cryptography
